@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title> React Js Course </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+
+  class CountChallenge extends React.Component{
+    constructor(props){
+      super(props);
+      this.state={count:0}
+    }
+    addValue: function(value){
+      this.setState({
+          count:this.state.count+value
+      })
+    }
+    render(){
+      return(
+        <div>
+        <h1> Count: {this.state.count} </h1>
+        <button onClick={this.addValue.bind(this,1)}> Add One </button>
+        <button onClick={this.addValue.bind(this,5)}> Add Five </button>
+        <button onClick={this.addValue.bind(this,10)}> Add Ten </button>
+        </div>
+      )
+    }
+  };
+
+  CountChallenge.defaultProps={valueOne:1,valueTwo:5,valueThree:10,text:'add'}
+
+  ReactDOM.render(
+    <CountChallenge valueOne={1}, valueTwo={5}, valueThree={10} />,
+    document.getElementById('app')
+  );
+  </script>
+</body>
+</html>
